@@ -1,0 +1,25 @@
+Copyright (c) Luke Stebner 2011 - lukestebner.com - luke.stebner@gmail.com
+
+jQuery Rumble Plugin
+
+This plugin creates a "rumble" effect on whatever element it is called on. A rumble
+is a few shakes back and forth, great for grabbing a users attention to a flash message
+or errors during form validation.
+
+Options:
+	- distance: The number of pixels to move on each shake (default: 4)
+	- shakes: The number of shakes to do (default: 3)
+	- Speed: The number of milliseconds to make each shake last (default: 100)
+	- autoStart: Shake immediately or wait (default: true)
+	- onComplete: Callback for when rumble is complete
+	- axis: The axis to shake on (default: 'x')
+	- shrinkDistance: If the shake distance should decrease throughout the rumble
+			- This is feature is hard to notice on quick, short shakes. But for
+			  wider shakes, it makes it a little smoother. An easing of sorts.
+	- rumbleClass: The class to add to the element while it's rumbling (default: 'rumbling')
+	- position: How to position the rumbling element (default: 'relative')
+			- *must be 'absolute' or 'relative' or the CSS animations may not work properly
+
+Methods:
+	- rumble: Do the rumble
+	- stop: Kill the rumble

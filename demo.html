@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Skeleton</title>
+		
+		<link rel="stylesheet" href="shCore.css" type="text/css" media="screen" charset="utf-8">
+		<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="shCore.js"></script>
+		<script type="text/javascript" charset="utf-8" src="jquery.rumble.min.js"></script>
+		
+		<style type="text/css" media="screen">
+			body{
+				background-color:#fff;
+				font-family:georgia;
+			}
+			
+			h2{
+				display:block;
+				margin:3px;
+			}
+			
+			input{
+				font-size:12px;
+			}
+			
+			#content{
+				padding:25px;
+				background-color:#ccc;
+				position:relative;
+				width:960px;
+				margin:0 auto;
+			}
+			
+			.example{
+				border-bottom:1px solid #333;
+				margin-bottom:20px;
+			}
+			
+			.syntaxhighlighter{
+				padding:6px 0 6px 6px;
+			}
+			
+			#example3,
+			#example4a,
+			#example4b{
+				margin:3px 3px 3px 0;
+				border:2px solid #111;
+				background-color:#555;
+				font-size:16px;
+				color:#eee;
+				text-align:center;
+				padding:3px;
+			}
+			
+			#example4a,
+			#example4b{
+				padding:10px;
+				float:left;
+				margin:10px;
+			}
+			
+			.demo p{
+				clear:both;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div class="example">
+				<h2>Including the rumble plugin</h2>
+			
+				<div class="code">
+					<pre class="brush: js">
+						//you'll need to have jQuery included
+						&lt;script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"&gt;&lt;/script&gt;	
+						
+						//then include the version of the plugin you want, I chose the minified
+						&lt;script type="text/javascript" charset="utf-8" src="/js/jquery.rumble.min.js"&gt;&lt;/script&gt;
+					</pre>
+				</div>
+			</div>
+			
+			<div class="example">
+				<h2>The Most Basic Rumble</h2>
+				
+				<div class="demo">
+					<input type="text" id="input1" value="Rumble horizontal on focus" />
+					<p>
+						I call this the most basic example because it uses all the defaults and simply requires instantiating the rumble plugin.
+					</p>
+				</div>
+			
+				<div class="code">
+					<pre class="brush: js">
+						$('#input1').focus(function(){
+							$(this).rumble();
+						});
+					</pre>
+				</div>
+			</div>
+			
+			<div class="example">
+				<h2>A Basic Vertical Rumble</h2>
+				
+				<div class="demo">
+					<input type="text" id="input2" value="Rumble vertically on focus" />
+					<p>
+						This example is hardly more complicated than the basic one, it's simply going to rumble vertically instead of horizontally. This is accomplished by passing the 'axis' parameter.
+					</p>
+				</div>
+			
+				<div class="code">
+					<pre class="brush: js">
+						$('#input2').focus(function(){
+							$(this).rumble({ axis:'y' });
+						});
+					</pre>
+				</div>
+			</div>
+			
+			<div class="example">
+				<h2>A More Customized Rumble</h2>
+				
+				<div class="demo">
+					<div id="example3">Click me to watch me rumble!</div>
+					<p>
+						This time let's set a few more parameters to make the rumble a little more unique. Let's also use a div instead of an input.
+					</p>
+				</div>
+			
+				<div class="code">
+					<pre class="brush: js">
+						$('#example3').click(function(){
+							$(this).rumble({
+								distance: 15,
+								shakes: 12,
+								speed: 130,
+								shrinkDistance: true
+							});
+						});
+					</pre>
+				</div>
+			</div>
+			
+			<div class="example">
+				<h2>Rumble with Callback</h2>
+				
+				<div class="demo">
+					<div id="example4a">Click me!</div>
+					<div id="example4b">Waiting...</div>
+					<p>
+						This example adds in a callback function for when the rumble has completed. In this case, we rumble something else, but you could do whatever you want of course.
+					</p>
+				</div>
+			
+				<div class="code">
+					<pre class="brush: js">
+						$('#example4a').click(function(){
+							$(this).rumble({
+								shakes: 8,
+								onComplete: function(){
+									$('#example4a').text('Done!');
+
+									$('#example4b').rumble({
+										shakes: 6
+									}).text('My turn!');
+								}
+							});
+						});
+					</pre>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$('#input1').focus(function(){
+					$(this).rumble();
+				});
+				
+				$('#input2').focus(function(){
+					$(this).rumble({ axis:'y' });
+				});
+				
+				$('#example3').click(function(){
+					$(this).rumble({
+						distance: 15,
+						shakes: 12,
+						speed: 130,
+						shrinkDistance: true
+					});
+				});
+				
+				$('#example4a').click(function(){
+					$(this).rumble({
+						shakes: 8,
+						onComplete: function(){
+							$('#example4a').text('Done!');
+							
+							$('#example4b').rumble({
+								shakes: 6
+							}).text('My turn!');
+						}
+					});
+				});
+			});
+			
+			SyntaxHighlighter.all();
+		</script>
+	</body>
+</html>
